@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 
@@ -17,19 +19,34 @@ public class MovieController {
     private MovieService movieService;
 
     @Autowired
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService) throws Exception
+    {
         this.movieService = movieService;
     }
 
     @PutMapping("movie")
-    public ResponseEntity<?> saveMovie(@RequestBody Movie movie) {
+    public ResponseEntity<?> saveMovie(@RequestBody Movie movie) throws Exception{
         return new ResponseEntity<>(movieService.saveMovie(movie), HttpStatus.CREATED);
     }
 
     @GetMapping("movies")
-    public ResponseEntity<?> getAllMovies() {
+    public ResponseEntity<?> getAllMovies() throws Exception
+    {
         return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.FOUND);
     }
+    @GetMapping("movies/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable("id") int id) throws Exception
+    {
+        Optional<Movie> movie=movieService.deleteMovieById(id);
+        return new ResponseEntity<>(movieService.deleteMovieById(id),HttpStatus.OK);
+    }
+    @PutMapping("movies/{id}")
+    public ResponseEntity<?> updateMovie(@PathVariable int id,@RequestBody Movie movie) throws Exception
+    {
+        Movie movie1=movieService.updateMovie(id,movie);
+        return new ResponseEntity<>(movieService.updateMovie(id,movie),HttpStatus.OK);
+    }
+
 
 
 }
