@@ -24,7 +24,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @PutMapping("movie")
+    @PostMapping("movie")
     public ResponseEntity<?> saveMovie(@RequestBody Movie movie) throws Exception{
         return new ResponseEntity<>(movieService.saveMovie(movie), HttpStatus.CREATED);
     }
@@ -46,7 +46,12 @@ public class MovieController {
         Movie movie1=movieService.updateMovie(id,movie);
         return new ResponseEntity<>(movieService.updateMovie(id,movie),HttpStatus.OK);
     }
-
+        @GetMapping("movie/get/{id}")
+    public ResponseEntity<?> getById(@PathVariable int id) throws Exception
+        {
+            Optional<Movie> movie=movieService.getMovieById(id);
+            return new ResponseEntity<>(movie,HttpStatus.OK);
+        }
 
 
 }

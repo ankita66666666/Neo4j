@@ -18,8 +18,9 @@ import java.util.List;
 
 public class Movie {
 
-    @Id
-    private int movieId;
+    @GraphId
+
+    private Long movieId;
     private String movieTitle;
     private int yearOfRelease;
     @Relationship(type = "like")
