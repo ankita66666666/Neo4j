@@ -23,7 +23,6 @@ public class Movie {
     private Long movieId;
     private String movieTitle;
     private int yearOfRelease;
-    @Relationship(type = "like")
-    private List<Movie> movies = new ArrayList<>();
+
 }
 

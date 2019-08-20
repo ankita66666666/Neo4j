@@ -1,5 +1,6 @@
 package com.stackroute.service;
 
+import com.stackroute.domain.Actor;
 import com.stackroute.domain.Movie;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,7 @@ public interface MovieService {
     public Optional<Movie> deleteMovieById(int id) throws Exception;
     public Movie updateMovie(int id,Movie movie) throws Exception;
     public Optional<Movie> getMovieById(int id) throws Exception;
+    public List<Actor> getActorById(int id) throws Exception;
+    public List<Actor> getActorByName(String name) throws Exception;
 
 }

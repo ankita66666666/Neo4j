@@ -1,5 +1,6 @@
 package com.stackroute.service;
 
+import com.stackroute.domain.Actor;
 import com.stackroute.domain.Movie;
 import com.stackroute.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Autowired
     private MovieRepository movieRepository;
+//    private ActorRepository actorRepository;
 
     public MovieServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
@@ -53,6 +55,22 @@ public class MovieServiceImpl implements MovieService {
        Optional<Movie> movies=movieRepository.findById(id);
        return movies;
 
+    }
+
+    @Override
+    public List<Actor> getActorById(int id) throws Exception {
+        return null;
+    }
+
+//    @Override
+//    public List<Actor> getActorById(int id) throws Exception {
+//        List<Actor> actors=actorRepository.findById(id);
+//        return actors;
+//    }
+
+    @Override
+    public List<Actor> getActorByName(String name) throws Exception {
+        return null;
     }
 
 }
